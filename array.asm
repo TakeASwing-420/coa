@@ -1,7 +1,7 @@
 .data
 array: .space 40                      # Allocate space for 10 integers (10 x 4 bytes)
 msg_prompt: .asciiz "Enter 10 integers:\n"
-msg_index: .asciiz "Enter integer "
+msg_index: .asciiz "Enter integer"
 msg_result: .asciiz "Array contents:\n"
 
 .text
@@ -14,10 +14,10 @@ main:
 
     # Initialize loop counter for input
     li $t0, 0                        # $t0 will be our index for array
+	li $t1, 40                       # Load 10 to compare with index
 
 input_loop:
     # Check if we've read 10 integers
-    li $t1, 10                       # Load 10 to compare with index
     beq $t0, $t1, display_array      # If $t0 == 10, go to display_array
 
     # Print "Enter integer <index>: "
@@ -47,10 +47,10 @@ display_array:
 
     # Initialize loop counter for output
     li $t0, 0                        # Reset index for display loop
+	li $t1, 40                       # End of array (10 integers * 4 bytes)
 
 output_loop:
     # Check if we've printed all 10 integers
-    li $t1, 40                       # End of array (10 integers * 4 bytes)
     beq $t0, $t1, exit               # If $t0 == 40, end the loop
 
     # Load the integer from the array and print it
